@@ -8,15 +8,21 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 playerVelocity;
     private bool isGrounded;
     private bool isSprinting;
-    public float speed = 5f;
-    public float sprintSpeed = 12.5f;
+    private bool isCrouching;
+    public float speed = 7.5f;
+    public float sprintSpeed = 14f;
+    public float crouchSpeed;
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
+    public float controllerHeight;
+    public Transform playerCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        controllerHeight = controller.height;
+        crouchSpeed = .35f * speed;
     }
 
     // Update is called once per frame
@@ -25,13 +31,29 @@ public class PlayerMotor : MonoBehaviour
         isGrounded = controller.isGrounded;
 
         //Determine if left shift key is pressed down to switch flag for isSprinting
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching) 
         {
             isSprinting = true;
         }
         else
         {
             isSprinting = false;
+        }
+        if (Input.GetKey(KeyCode.C) && isGrounded)
+        {
+            isCrouching = true;
+            if(isCrouching)
+            {
+                playerCamera.localPosition = new Vector3(0,.5f,0);
+                Debug.Log("Crouching");
+            }
+
+        }
+        else
+        {
+            isCrouching = false;
+            playerCamera.localPosition = new Vector3(0,.8f,0);
+            Debug.Log("Standing");
         }
     }
     //Recieves input from InputManager.cs and applies them to our character controller
@@ -45,11 +67,14 @@ public class PlayerMotor : MonoBehaviour
         {
             controller.Move(transform.TransformDirection(moveDirection) * sprintSpeed * Time.deltaTime);
         }
-        else
+        else if (isCrouching)
+        {
+            controller.Move(transform.TransformDirection(moveDirection) * crouchSpeed * Time.deltaTime);
+        }
+        else 
         {
             controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         }
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         //Implementing gravity to increase over time 
         playerVelocity.y += gravity * Time.deltaTime;
         if(isGrounded && playerVelocity.y < 0)
