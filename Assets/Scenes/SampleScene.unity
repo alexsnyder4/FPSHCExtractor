@@ -234,9 +234,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f5efd8655e92f47a8f6cb1f339e216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7.5
+  sprintSpeed: 14
+  crouchSpeed: 2.5
   gravity: -9.8
-  jumpHeight: 0.75
+  jumpHeight: 3
+  controllerHeight: 0
+  playerCamera: {fileID: 971174445}
 --- !u!114 &872375034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +271,11 @@ MonoBehaviour:
 --- !u!20 &971174443 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8413471812853193868, guid: b520edc80559b514bbfe94648ae53129, type: 3}
+  m_PrefabInstance: {fileID: 2608587506959533894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &971174445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6156341364258551434, guid: b520edc80559b514bbfe94648ae53129, type: 3}
   m_PrefabInstance: {fileID: 2608587506959533894}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1051080553
