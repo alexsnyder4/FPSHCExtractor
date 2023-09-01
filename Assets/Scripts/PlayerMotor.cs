@@ -9,9 +9,10 @@ public class PlayerMotor : MonoBehaviour
     private bool isGrounded;
     private bool isSprinting;
     private bool isCrouching;
+
     public float speed = 7.5f;
     public float sprintSpeed = 14f;
-    public float crouchSpeed;
+    public float crouchSpeed = 2.5f;
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
     public float controllerHeight;
@@ -22,7 +23,6 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         controllerHeight = controller.height;
-        crouchSpeed = .35f * speed;
     }
 
     // Update is called once per frame
@@ -39,6 +39,7 @@ public class PlayerMotor : MonoBehaviour
         {
             isSprinting = false;
         }
+        //Determine if C key is pressed to switch flag for isCrouching
         if (Input.GetKey(KeyCode.C) && isGrounded)
         {
             isCrouching = true;
@@ -47,7 +48,6 @@ public class PlayerMotor : MonoBehaviour
                 playerCamera.localPosition = new Vector3(0,.5f,0);
                 Debug.Log("Crouching");
             }
-
         }
         else
         {
@@ -56,6 +56,7 @@ public class PlayerMotor : MonoBehaviour
             Debug.Log("Standing");
         }
     }
+
     //Recieves input from InputManager.cs and applies them to our character controller
     public void ProcessMove(Vector2 input)
     {
@@ -63,7 +64,7 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        if(isSprinting) 
+        if (isSprinting) 
         {
             controller.Move(transform.TransformDirection(moveDirection) * sprintSpeed * Time.deltaTime);
         }
@@ -75,6 +76,7 @@ public class PlayerMotor : MonoBehaviour
         {
             controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
         }
+        
         //Implementing gravity to increase over time 
         playerVelocity.y += gravity * Time.deltaTime;
         if(isGrounded && playerVelocity.y < 0)
