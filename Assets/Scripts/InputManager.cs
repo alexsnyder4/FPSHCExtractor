@@ -23,12 +23,13 @@ public class InputManager : MonoBehaviour
 
         onFoot.Jump.performed += ctx => motor.Jump();
         
+        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() 
     {
-        //tell player to move based on movement action\
+        //tell player to move based on movement action
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
     void LateUpdate()
