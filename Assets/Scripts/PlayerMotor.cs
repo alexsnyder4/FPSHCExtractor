@@ -46,14 +46,14 @@ public class PlayerMotor : MonoBehaviour
             if(isCrouching)
             {
                 playerCamera.localPosition = new Vector3(0,.5f,0);
-                Debug.Log("Crouching");
+                //Debug.Log("Crouching");
             }
         }
         else
         {
             isCrouching = false;
             playerCamera.localPosition = new Vector3(0,.8f,0);
-            Debug.Log("Standing");
+            //Debug.Log("Standing");
         }
     }
 
