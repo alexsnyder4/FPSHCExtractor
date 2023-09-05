@@ -28,15 +28,16 @@ public class PlayerInteract : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo; //variable to store hit information
-        if (Physics.Raycast(ray, out hitInfo, distance,mask))
+
+        if (Physics.Raycast(ray, out hitInfo, distance,mask)) //create ray at center of screen
             {
-                if(hitInfo.collider.GetComponent<Interactable>() != null)
+                if(hitInfo.collider.GetComponent<Interactable>() != null) //if ray touches object with interactable component
                 {
                     Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                    playerUI.UpdateText(interactable.promptMessage);
+                    playerUI.UpdateText(interactable.promptMessage); // updates text on screen with promt for interactable object
                     if(inputManager.onFoot.Interact.triggered)
                     {
-                        Debug.Log("Interacted");
+                        Debug.Log("Interacted"); 
                     }
                 }
             }
