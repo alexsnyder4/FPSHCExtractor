@@ -37,7 +37,7 @@ public class PlayerInteract : MonoBehaviour
                     playerUI.UpdateText(interactable.promptMessage); // updates text on screen with promt for interactable object
                     if(inputManager.onFoot.Interact.triggered)
                     {
-                        Debug.Log("Interacted"); 
+                        interactable.baseInteract();
                     }
                 }
             }

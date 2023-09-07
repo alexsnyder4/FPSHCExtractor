@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7037746}
   - component: {fileID: 7037745}
   - component: {fileID: 7037744}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 7037742}
   serializedVersion: 2
   m_LocalRotation: {x: 0.005864224, y: 0.9883825, z: -0.1466606, w: -0.039450813}
-  m_LocalPosition: {x: -1.44, y: -4.17, z: 2.23}
+  m_LocalPosition: {x: 0.41, y: -4.21, z: 2.09}
   m_LocalScale: {x: 4, y: 5, z: 0.09999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Open Chest
+  door: {fileID: 0}
 --- !u!65 &427297208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -528,7 +529,7 @@ GameObject:
   - component: {fileID: 833360425}
   - component: {fileID: 833360424}
   - component: {fileID: 833360423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +907,7 @@ GameObject:
   - component: {fileID: 1151910406}
   - component: {fileID: 1151910405}
   - component: {fileID: 1151910404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +923,7 @@ Transform:
   m_GameObject: {fileID: 1151910402}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0058642235, y: 0.9883825, z: -0.1466606, w: -0.039450813}
-  m_LocalPosition: {x: 6.2, y: -4.37, z: 1.64}
+  m_LocalPosition: {x: 4.38, y: -4.33, z: 1.78}
   m_LocalScale: {x: 4, y: 5, z: 0.09999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1223,7 +1224,7 @@ GameObject:
   - component: {fileID: 1838520415}
   - component: {fileID: 1838520414}
   - component: {fileID: 1838520413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857808816}
   - component: {fileID: 1857808817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1364,7 @@ Animator:
   m_GameObject: {fileID: 1857808815}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 64a325b341d14fd46a6027ff344f6aa2, type: 2}
+  m_Controller: {fileID: 9100000, guid: af85ba4275e676449aa3cdfd2f5dd886, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Read
+  door: {fileID: 0}
 --- !u!1 &2029489687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1406,7 @@ GameObject:
   - component: {fileID: 2029489691}
   - component: {fileID: 2029489690}
   - component: {fileID: 2029489689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,6 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Open Door
+  door: {fileID: 1857808815}
 --- !u!65 &2087977536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1709,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 397.35, y: 9.1}
+  m_AnchoredPosition: {x: 397.46, y: 9.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2608587506959533894

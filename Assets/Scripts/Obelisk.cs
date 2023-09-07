@@ -21,6 +21,6 @@ public class Obelisk : Interactable
     protected override void Interact()
     {
         doorOpen = !doorOpen;
-        door.GetComponent<Animator>().SetBool("IsOpen", doorOpen);
+        door.GetComponent<Animator>().SetBool("IsOpen", doorOpen); 
     }
 }
