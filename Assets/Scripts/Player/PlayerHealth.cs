@@ -7,25 +7,26 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float health;
-    private float lerpTimer;
-    public float maxHealth = 100;
+    private float lerpTimer;    
     public float chipSpeed = 2f;
     public string currHP;
     public Image frontHealthBar;
     public Image backHealthBar;
     public TextMeshProUGUI numCurrHealth;
+    public GameObject gs;
+    private GameState gameState;
     
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        gs = GameObject.FindGameObjectWithTag("GameState");
+        gameState = gs.GetComponent<GameState>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = Mathf.Clamp(health, 0, maxHealth);
+        //health = Mathf.Clamp(health, 0, maxHealth);
         UpdateHealthUI();
         
         if(Input.GetKeyDown(KeyCode.P))
@@ -39,11 +40,12 @@ public class PlayerHealth : MonoBehaviour
     }
     public void UpdateHealthUI()
     {
-        Debug.Log(health);
+        gameState.currentHp = Mathf.Clamp(gameState.currentHp, 0, gameState.maxHp);
+        //Debug.Log(gameState.currentHp);
         UpdateNumHPText();
         float fillFront = frontHealthBar.fillAmount;
         float fillBack = backHealthBar.fillAmount;
-        float hFraction = health/maxHealth; //true health value
+        float hFraction = gameState.currentHp/gameState.maxHp; //true health value
 
         if(fillBack > hFraction)
         {
@@ -68,16 +70,16 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        gameState.currentHp -= damage;
         lerpTimer = 0f;
     }
     public void RestoreHealth(float healAmt)
     {
-        health += healAmt;
+        gameState.currentHp += healAmt;
         lerpTimer = 0f;
     }
     public void UpdateNumHPText()
     {
-        numCurrHealth.text = Convert.ToString(health) + "/" + maxHealth;
+        numCurrHealth.text = Convert.ToString(gameState.currentHp) + "/" + gameState.maxHp;
     }
 }
